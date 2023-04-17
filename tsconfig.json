@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "strict": true,
+    "module": "ES2015",
+    "moduleResolution": "nodenext",
+    "removeComments": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["packages/**/*"],
+  "exclude": ["node_modules", "packages/**/webpack.config.ts"]
+}

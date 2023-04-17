@@ -1,0 +1,15 @@
+{
+  "name": "vue-app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack build"
+  },
+  "author": "winters0727@gmail.com",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "vue-loader": "^17.0.1",
+    "vue-template-compiler": "^2.7.14"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "author": "winters0727@gmail.com",
+  "license": "ISC",
+  "devDependencies": {},
+  "description": ""
+}
