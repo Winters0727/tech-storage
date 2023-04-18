@@ -1,11 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   mode: 'development',
-  entry: './src/main.ts',
+  entry: './src/main.tsx',
   output: {
     filename: '[name].[contenthash].bundle.js',
     path: path.join(__dirname, 'src', 'dist'),
@@ -15,27 +14,20 @@ module.exports = {
   devServer: {
     static: path.join(__dirname, 'src', 'public'),
     compress: true,
-    port: 18080,
+    port: 18081,
     hot: true,
   },
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        use: 'vue-loader',
-      },
-      {
-        test: /\.ts$/,
+        test: /\.ts[x]?$/,
         use: {
           loader: 'ts-loader',
-          options: {
-            appendTsSuffixTo: [/\.vue$/],
-          },
         },
         exclude: /node_modules/,
       },
       {
-        test: /\.js$/,
+        test: /\.js[x]?$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -46,16 +38,11 @@ module.exports = {
       },
       {
         test: /\.((s[ac])|c)ss$/,
-        use: ['style-loader', 'vue-style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      __VUE_OPTIONS_API__: false,
-      __VUE_PROD_DEVTOOLS__: false,
-    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
@@ -64,6 +51,6 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
     },
-    extensions: ['.ts', '.js', '.vue'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
   },
 };
