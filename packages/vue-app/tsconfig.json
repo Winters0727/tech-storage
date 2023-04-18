@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "allowJs": true
+    "types": ["node"]
   },
+  "include": ["webpack.config.ts", "./src/*"],
   "extends": "../../tsconfig.json"
 }

@@ -2,8 +2,8 @@
   "name": "vue-app",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack serve",
-    "build": "webpack build"
+    "dev": "webpack serve --config webpack.config.ts",
+    "build": "webpack build --config webpack.config.ts"
   },
   "author": "winters0727@gmail.com",
   "license": "ISC",

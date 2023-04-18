@@ -1,3 +1,13 @@
 {
+  "compilerOptions": {
+    "baseUrl": "./",
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "jsx": "react",
+    "types": ["node", "react", "react-dom"]
+  },
+  "include": ["webpack.config.ts", "./src/*"],
   "extends": "../../tsconfig.json"
 }
