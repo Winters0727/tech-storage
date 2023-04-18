@@ -1,3 +1,11 @@
 {
+  "compilerOptions": {
+    "baseUrl": "./",
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowJs": true
+  },
   "extends": "../../tsconfig.json"
 }

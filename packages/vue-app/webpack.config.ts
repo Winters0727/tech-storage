@@ -1,20 +1,22 @@
 const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   mode: 'development',
   entry: './src/main.ts',
   output: {
-    filename: '[name].bundle.js',
-    path: path.join(__dirname, 'dist'),
+    filename: '[name].[hash].bundle.js',
+    path: path.join(__dirname, 'src', 'dist'),
     clean: true,
   },
+  devtool: 'inline-source-map',
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    static: path.join(__dirname, 'src', 'public'),
     compress: true,
     port: 18080,
+    hot: true,
   },
   module: {
     rules: [
@@ -23,18 +25,45 @@ module.exports = {
         use: 'vue-loader',
       },
       {
-        test: /\.js$/,
-        use: 'babel-loader',
+        test: /\.ts$/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          },
+        },
         exclude: /node_modules/,
       },
       {
-        test: /\.[s[ac]|c]ss$/,
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.((s[ac])|c)ss$/,
         use: ['style-loader', 'vue-style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
-  optimization: {
-    runtimeChunk: 'single',
+  plugins: [
+    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: false,
+      __VUE_PROD_DEVTOOLS__: false,
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/public/index.html',
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+    },
+    extensions: ['.ts', '.js', '.vue'],
   },
 };
