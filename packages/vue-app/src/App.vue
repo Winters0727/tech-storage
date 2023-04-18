@@ -1,9 +1,8 @@
-<template>
-  <div id="app">vue app test</div>
-</template>
+<script setup lang="ts"></script>
 
-<style lang="scss">
-#id {
-  display: block;
-}
-</style>
+<template>
+  <nav>
+    <router-link to="/">홈으로</router-link>
+  </nav>
+  <router-view />
+</template>
