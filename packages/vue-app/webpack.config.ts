@@ -17,6 +17,7 @@ module.exports = {
     compress: true,
     port: 18080,
     hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -46,7 +47,17 @@ module.exports = {
       },
       {
         test: /\.((s[ac])|c)ss$/,
-        use: ['style-loader', 'vue-style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+          'sass-loader',
+        ],
       },
     ],
   },
