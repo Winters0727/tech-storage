@@ -7,6 +7,13 @@
   },
   "author": "winters0727@gmail.com",
   "license": "ISC",
-  "devDependencies": {},
-  "description": ""
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.6",
+    "@types/react-dom": "^18.0.11"
+  },
+  "description": "",
+  "dependencies": {
+    "@emotion/css": "^11.10.6",
+    "@emotion/styled": "^11.10.6"
+  }
 }
